@@ -46,12 +46,17 @@ const charactersService = {
             data: {
               characters: { info, results },
             },
-          }) =>
-            resolve({
-              totalItems: info.count,
-              totalPages: info.pages,
-              characters: results,
-            })
+            errors,
+          }) => {
+            if (errors?.length) {
+              reject("No Record Found By This Query");
+            } else
+              resolve({
+                totalItems: info.count,
+                totalPages: info.pages,
+                characters: results,
+              });
+          }
         )
         .catch((err) => reject(err.message));
     });

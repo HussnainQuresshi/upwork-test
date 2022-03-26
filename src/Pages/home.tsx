@@ -24,7 +24,7 @@ export default function Home() {
   const Characters = useMemo(
     () =>
       characters.map((character: character, i) => (
-        <Col key={i} xs={12} sm={6} md={4} lg={3}>
+        <Col key={i} xs={24} sm={6} md={4} lg={3} xl={2}>
           <Character character={character} />
         </Col>
       )),
@@ -36,22 +36,9 @@ export default function Home() {
     <ThemeProvider
       breakpoints={["xxxl", "xxl", "xl", "lg", "md", "sm", "xs", "xxs"]}
     >
-      <Container
-        style={{
-          height: "100vh",
-          textAlign: "center",
-          paddingTop: "20px",
-          justifyContent: "center",
-        }}
-      >
-        <ModalHeader
-          style={{
-            fontSize: "2rem",
-            fontWeight: "bold",
-            justifyContent: "center",
-          }}
-        >
-          Senior Frontend Technical Challenge
+      <Container className="home-container">
+        <ModalHeader className="home-header">
+          Frontend Technical Challenge
         </ModalHeader>
         <Row className="d-flex justify-content-center pt-3">
           <Search />
@@ -64,33 +51,18 @@ export default function Home() {
             {Characters}
           </Row>
         )}
-        <Container
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            paddingTop: "20px",
-          }}
-        >
+        <Container className="pagination-container">
           <Pagination
             circle
             totalPages={totalPages}
             currentPage={currentPage}
-            showMax={5}
             size="sm"
             threeDots={true}
             prevNext={true}
             onClick={onPageChange}
           />
         </Container>
-        <ModalHeader
-          style={{
-            fontSize: "2rem",
-            fontWeight: "bold",
-            justifyContent: "center",
-          }}
-        >
-          Rick & Morty
-        </ModalHeader>
+        <ModalHeader className="home-footer">Rick & Morty</ModalHeader>
       </Container>
     </ThemeProvider>
   );

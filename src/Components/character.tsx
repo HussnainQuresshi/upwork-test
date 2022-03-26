@@ -6,14 +6,16 @@ import { character } from "../types";
 export default function Character({ character }: { character: character }) {
   const { isFav, toggleFav } = useContext(CommonContext);
   return (
-    <Card style={{ width: "15rem" }}>
-      <Card.Img variant="top" src={character.image} />
+    <Card className="shadow mb-5 character-card">
+      <Card.Img src={character.image} className="card-image"></Card.Img>
       <Card.Body>
-        <Card.Title>{character.name}</Card.Title>
-        <Card.Title>{character.status}</Card.Title>
-        <Card.Title>{character.gender}</Card.Title>
+        <Card.Text>
+          <b>{character.name}</b>
+        </Card.Text>
+        <Card.Text>{character.status}</Card.Text>
+        <Card.Text>{character.gender}</Card.Text>
         <span
-          style={{ cursor: "pointer" }}
+          className="heart"
           onClick={() => {
             toggleFav(character.id);
           }}

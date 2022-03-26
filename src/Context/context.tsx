@@ -72,6 +72,10 @@ export const CommonContextProvider = ({
         }) => {
           setCraracters(res.characters);
           setLoading(false);
+          setPageInfo({
+            totalPages: res.totalPages,
+            currentPage: page,
+          });
         }
       )
       .catch((ex) => {

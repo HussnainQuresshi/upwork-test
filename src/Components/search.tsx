@@ -19,7 +19,7 @@ export default function Search() {
     searchText,
   } = useContext(CommonContext);
   return (
-    <Container>
+    <Container style={{ color: "white" }}>
       <Row>
         <Col xs={12} md={8}>
           <Form.Group className="mb-3">
