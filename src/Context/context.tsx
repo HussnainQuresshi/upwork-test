@@ -83,7 +83,7 @@ export const CommonContextProvider = ({
     onSearchText(searchText);
   }, [onSearchText, searchText]);
   const toggleFav = (id: string) => {
-    const Fav = localStorage.getItem("Fav");
+    const Fav = localStorage.getItem("favorite");
     if (Fav) {
       const FavArray = JSON.parse(Fav);
       if (FavArray.includes(id)) {
@@ -91,14 +91,14 @@ export const CommonContextProvider = ({
       } else {
         FavArray.push(id);
       }
-      localStorage.setItem("Fav", JSON.stringify(FavArray));
+      localStorage.setItem("favorite", JSON.stringify(FavArray));
     } else {
-      localStorage.setItem("Fav", JSON.stringify([id]));
+      localStorage.setItem("favorite", JSON.stringify([id]));
     }
     setRefresh(!refresh);
   };
   const isFav = (id: string) => {
-    const Fav = localStorage.getItem("Fav");
+    const Fav = localStorage.getItem("favorite");
     if (Fav) {
       const FavArray = JSON.parse(Fav);
       return FavArray.includes(id);
