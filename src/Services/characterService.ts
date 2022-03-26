@@ -30,11 +30,14 @@ const charactersService = {
                     count
                 }
                 results {
-                    id,
-                    name,
-                    status,
-                    gender,
-                    image,
+                  id,
+                  name,
+                  status,
+                  species,
+                  type,
+                  gender,
+                  image,
+                  created
                 }
             }
         }`,

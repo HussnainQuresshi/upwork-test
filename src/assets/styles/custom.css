@@ -213,6 +213,7 @@ body {
 }
 .card-image {
   border-radius: 1rem !important;
+  cursor: pointer;
 }
 
 .home-container {
