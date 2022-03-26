@@ -224,18 +224,18 @@ body {
 .home-header {
   font-size: 2rem;
   font-weight: bold;
-  justify-content: center;
+  justify-content: center !important;
   color: white;
 }
 .pagination-container {
-  display: "flex";
-  justify-content: "center";
-  padding-top: "20px";
+  display: flex;
+  justify-content: center;
 }
 
 .home-footer {
   font-size: 2rem;
   font-weight: bold;
-  justify-content: center;
+  display: flex;
+  justify-content: center !important ;
   color: white;
 }

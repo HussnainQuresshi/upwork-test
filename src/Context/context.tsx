@@ -8,6 +8,7 @@ import React, {
 import debounce from "lodash/debounce";
 import { character, commonContext } from "../types";
 import characterService from "../Services/characterService";
+
 const context = {} as commonContext;
 
 export const CommonContext = createContext(context);
@@ -83,9 +84,11 @@ export const CommonContextProvider = ({
         alert(ex.message);
       });
   };
+
   useEffect(() => {
     onSearchText(searchText);
   }, [onSearchText, searchText]);
+
   const toggleFav = (id: string) => {
     const Fav = localStorage.getItem("favorite");
     if (Fav) {
@@ -101,6 +104,7 @@ export const CommonContextProvider = ({
     }
     setRefresh(!refresh);
   };
+
   const isFav = (id: string) => {
     const Fav = localStorage.getItem("favorite");
     if (Fav) {
@@ -109,6 +113,7 @@ export const CommonContextProvider = ({
     }
     return false;
   };
+
   const onGenderChange = (gender: string) => {
     setGender(gender);
     searchCharacters({
@@ -118,6 +123,7 @@ export const CommonContextProvider = ({
       page: currentPage,
     });
   };
+
   const onStatusChange = (status: string) => {
     setStatus(status);
     searchCharacters({
@@ -127,6 +133,7 @@ export const CommonContextProvider = ({
       page: currentPage,
     });
   };
+
   const onPageChange = (currentPage: number) => {
     setPageInfo((_) => ({ ..._, currentPage }));
     searchCharacters({

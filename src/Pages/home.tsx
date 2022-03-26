@@ -62,7 +62,9 @@ export default function Home() {
             onClick={onPageChange}
           />
         </Container>
-        <ModalHeader className="home-footer">Rick & Morty</ModalHeader>
+        <ModalHeader className="home-footer">
+          Copyright &copy; 2022 Husnain Qureshi
+        </ModalHeader>
       </Container>
     </ThemeProvider>
   );
