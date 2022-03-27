@@ -19,37 +19,22 @@ export default function Search() {
     searchText,
   } = useContext(CommonContext);
   return (
-    <Container style={{ color: "white" }}>
+    <Container className="text-white">
       <Row>
         <Col xs={12} md={8}>
           <Form.Group className="mb-3">
-            <FormLabel
-              style={{
-                float: "left",
-              }}
-            >
-              Search By Names
-            </FormLabel>
+            <FormLabel className="float-left">Search By Names</FormLabel>
             <FormControl
               onChange={({ target: { value } }) => onSearchText(value)}
               value={searchText}
               placeholder="Search Names..."
               aria-label="Search Names"
-              style={{
-                marginRight: "10px",
-              }}
             />
           </Form.Group>
         </Col>
         <Col xs={12} sm={6} md={2}>
           <Form.Group className="mb-3">
-            <FormLabel
-              style={{
-                float: "left",
-              }}
-            >
-              Filter Status
-            </FormLabel>
+            <FormLabel className="float-left">Filter Status</FormLabel>
             <Form.Select
               aria-label="Status"
               value={status}
@@ -64,13 +49,7 @@ export default function Search() {
         </Col>
         <Col xs={12} sm={6} md={2}>
           <Form.Group className="mb-3">
-            <FormLabel
-              style={{
-                float: "left",
-              }}
-            >
-              Filter Gender
-            </FormLabel>
+            <FormLabel className="float-left">Filter Gender</FormLabel>
             <Form.Select
               aria-label="Gender"
               value={gender}
