@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Modal } from "react-bootstrap";
+import React, { useState } from 'react';
+import { Modal } from 'react-bootstrap';
 interface ModalProps {
   btnComponent?: (props: { onClick: () => void }) => React.ReactNode;
   content: (props: { onClose: () => void }) => React.ReactNode;
@@ -24,8 +24,7 @@ function ModalContainer({ btnComponent, content, title, isOpen }: ModalProps) {
         onHide={() => handleCancel()}
         size="lg"
         aria-labelledby="contained-modal-title-vcenter"
-        centered
-      >
+        centered>
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">{title}</Modal.Title>
         </Modal.Header>

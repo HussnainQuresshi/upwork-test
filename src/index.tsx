@@ -1,12 +1,12 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import reportWebVitals from "./reportWebVitals";
-import NotFoundPage from "./Pages/404";
-import Home from "./Pages/home";
-import "./assets/styles/custom.css";
-import "bootstrap/dist/css/bootstrap.min.css";
-import { CommonContextProvider } from "./Context/context";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import reportWebVitals from './reportWebVitals';
+import NotFoundPage from './Pages/404';
+import Home from './Pages/home';
+import './assets/styles/custom.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { CommonContextProvider } from './Context/context';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -19,7 +19,7 @@ ReactDOM.render(
       </CommonContextProvider>
     </BrowserRouter>
   </React.StrictMode>,
-  document.getElementById("root")
+  document.getElementById('root'),
 );
 
 // If you want to start measuring performance in your app, pass a function

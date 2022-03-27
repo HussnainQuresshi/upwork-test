@@ -1,26 +1,13 @@
-import React, { useContext, useMemo } from "react";
-import {
-  ThemeProvider,
-  Container,
-  Row,
-  Col,
-  ModalHeader,
-} from "react-bootstrap";
-import Character from "../Components/character";
-import Pagination from "react-bootstrap-4-pagination";
-import Search from "../Components/search";
-import { CommonContext } from "../Context/context";
-import { character } from "../types";
-import Loader from "../Components/loader";
+import React, { useContext, useMemo } from 'react';
+import { ThemeProvider, Container, Row, Col, ModalHeader } from 'react-bootstrap';
+import Character from '../Components/character';
+import Pagination from 'react-bootstrap-4-pagination';
+import Search from '../Components/search';
+import { CommonContext } from '../Context/context';
+import { character } from '../types';
+import Loader from '../Components/loader';
 export default function Home() {
-  const {
-    totalPages,
-    currentPage,
-    onPageChange,
-    characters,
-    refresh,
-    loading,
-  } = useContext(CommonContext);
+  const { totalPages, currentPage, onPageChange, characters, refresh, loading } = useContext(CommonContext);
   const Characters = useMemo(
     () =>
       characters.map((character: character, i) => (
@@ -29,28 +16,18 @@ export default function Home() {
         </Col>
       )),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [characters, refresh]
+    [characters, refresh],
   );
 
   return (
-    <ThemeProvider
-      breakpoints={["xxxl", "xxl", "xl", "lg", "md", "sm", "xs", "xxs"]}
-    >
+    <ThemeProvider breakpoints={['xxxl', 'xxl', 'xl', 'lg', 'md', 'sm', 'xs', 'xxs']}>
       <Container className="home-container">
-        <ModalHeader className="home-header">
-          Frontend Technical Challenge
-        </ModalHeader>
+        <ModalHeader className="home-header">Frontend Technical Challenge</ModalHeader>
         <Row className="d-flex justify-content-center pt-3">
           <Search />
         </Row>
 
-        {loading ? (
-          <Loader />
-        ) : (
-          <Row className="d-flex justify-content-center pt-3 g-5">
-            {Characters}
-          </Row>
-        )}
+        {loading ? <Loader /> : <Row className="d-flex justify-content-center pt-3 g-5">{Characters}</Row>}
         <Container className="pagination-container">
           <Pagination
             circle
@@ -62,9 +39,7 @@ export default function Home() {
             onClick={onPageChange}
           />
         </Container>
-        <ModalHeader className="home-footer">
-          Copyright &copy; 2022 Husnain Qureshi
-        </ModalHeader>
+        <ModalHeader className="home-footer">Copyright &copy; 2022 Husnain Qureshi</ModalHeader>
       </Container>
     </ThemeProvider>
   );

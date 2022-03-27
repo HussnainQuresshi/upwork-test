@@ -1,23 +1,9 @@
-import React, { useContext } from "react";
-import {
-  Container,
-  Row,
-  Col,
-  FormControl,
-  Form,
-  FormLabel,
-} from "react-bootstrap";
-import { CommonContext } from "../Context/context";
+import React, { useContext } from 'react';
+import { Container, Row, Col, FormControl, Form, FormLabel } from 'react-bootstrap';
+import { CommonContext } from '../Context/context';
 
 export default function Search() {
-  const {
-    onGenderChange,
-    onStatusChange,
-    onSearchText,
-    gender,
-    status,
-    searchText,
-  } = useContext(CommonContext);
+  const { onGenderChange, onStatusChange, onSearchText, gender, status, searchText } = useContext(CommonContext);
   return (
     <Container className="text-white">
       <Row>
@@ -35,11 +21,7 @@ export default function Search() {
         <Col xs={12} sm={6} md={2}>
           <Form.Group className="mb-3">
             <FormLabel className="float-left">Filter Status</FormLabel>
-            <Form.Select
-              aria-label="Status"
-              value={status}
-              onChange={({ target: { value } }) => onStatusChange(value)}
-            >
+            <Form.Select aria-label="Status" value={status} onChange={({ target: { value } }) => onStatusChange(value)}>
               <option value="">All</option>
               <option value="Alive">Alive</option>
               <option value="Dead">Dead</option>
@@ -50,11 +32,7 @@ export default function Search() {
         <Col xs={12} sm={6} md={2}>
           <Form.Group className="mb-3">
             <FormLabel className="float-left">Filter Gender</FormLabel>
-            <Form.Select
-              aria-label="Gender"
-              value={gender}
-              onChange={({ target: { value } }) => onGenderChange(value)}
-            >
+            <Form.Select aria-label="Gender" value={gender} onChange={({ target: { value } }) => onGenderChange(value)}>
               <option value="">All</option>
               <option value="Female">Female</option>
               <option value="Male">Male</option>

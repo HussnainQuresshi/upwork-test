@@ -1,26 +1,16 @@
-import React, {
-  useState,
-  createContext,
-  useEffect,
-  useRef,
-  useMemo,
-} from "react";
-import debounce from "lodash/debounce";
-import { character, commonContext } from "../types";
-import characterService from "../Services/characterService";
+import React, { useState, createContext, useEffect, useRef, useMemo } from 'react';
+import debounce from 'lodash/debounce';
+import { character, commonContext } from '../types';
+import characterService from '../Services/characterService';
 
 const context = {} as commonContext;
 
 export const CommonContext = createContext(context);
 
-export const CommonContextProvider = ({
-  children,
-}: {
-  children: React.ReactNode;
-}) => {
-  const [searchText, setSearchText] = useState("");
-  const [gender, setGender] = useState("");
-  const [status, setStatus] = useState("");
+export const CommonContextProvider = ({ children }: { children: React.ReactNode }) => {
+  const [searchText, setSearchText] = useState('');
+  const [gender, setGender] = useState('');
+  const [status, setStatus] = useState('');
   const [loading, setLoading] = useState(false);
   const [refresh, setRefresh] = useState(false);
   const [{ currentPage, totalPages }, setPageInfo] = useState({
@@ -34,7 +24,7 @@ export const CommonContextProvider = ({
 
   const onSearchText = useMemo(
     () =>
-      debounce((value) => {
+      debounce(value => {
         debounceRef.current += 1;
         const LocalRef = debounceRef.current;
         setTimeout(() => {
@@ -49,14 +39,9 @@ export const CommonContextProvider = ({
         }, 1);
       }, 300),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    []
+    [],
   );
-  const searchCharacters = ({
-    searchText = "",
-    status = "",
-    gender = "",
-    page = 1,
-  }) => {
+  const searchCharacters = ({ searchText = '', status = '', gender = '', page = 1 }) => {
     setLoading(true);
     characterService
       .getCharacters({
@@ -65,21 +50,15 @@ export const CommonContextProvider = ({
         gender,
         page,
       })
-      .then(
-        (res: {
-          totalItems: number;
-          totalPages: number;
-          characters: character[];
-        }) => {
-          setCraracters(res.characters);
-          setLoading(false);
-          setPageInfo({
-            totalPages: res.totalPages,
-            currentPage: page,
-          });
-        }
-      )
-      .catch((ex) => {
+      .then((res: { totalItems: number; totalPages: number; characters: character[] }) => {
+        setCraracters(res.characters);
+        setLoading(false);
+        setPageInfo({
+          totalPages: res.totalPages,
+          currentPage: page,
+        });
+      })
+      .catch(ex => {
         setLoading(false);
         alert(ex.message);
       });
@@ -90,7 +69,7 @@ export const CommonContextProvider = ({
   }, [onSearchText, searchText]);
 
   const toggleFav = (id: string) => {
-    const Fav = localStorage.getItem("favorite");
+    const Fav = localStorage.getItem('favorite');
     if (Fav) {
       const FavArray = JSON.parse(Fav);
       if (FavArray.includes(id)) {
@@ -98,15 +77,15 @@ export const CommonContextProvider = ({
       } else {
         FavArray.push(id);
       }
-      localStorage.setItem("favorite", JSON.stringify(FavArray));
+      localStorage.setItem('favorite', JSON.stringify(FavArray));
     } else {
-      localStorage.setItem("favorite", JSON.stringify([id]));
+      localStorage.setItem('favorite', JSON.stringify([id]));
     }
     setRefresh(!refresh);
   };
 
   const isFav = (id: string) => {
-    const Fav = localStorage.getItem("favorite");
+    const Fav = localStorage.getItem('favorite');
     if (Fav) {
       const FavArray = JSON.parse(Fav);
       return FavArray.includes(id);
@@ -135,7 +114,7 @@ export const CommonContextProvider = ({
   };
 
   const onPageChange = (currentPage: number) => {
-    setPageInfo((_) => ({ ..._, currentPage }));
+    setPageInfo(_ => ({ ..._, currentPage }));
     searchCharacters({
       searchText,
       status,
@@ -161,8 +140,7 @@ export const CommonContextProvider = ({
         characters,
         refresh,
         loading,
-      }}
-    >
+      }}>
       {children}
     </CommonContext.Provider>
   );

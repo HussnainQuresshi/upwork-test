@@ -1,12 +1,8 @@
-import React from "react";
-import { Card } from "react-bootstrap";
-import { character } from "../types";
+import React from 'react';
+import { Card } from 'react-bootstrap';
+import { character } from '../types';
 
-export default function CharacterDetails({
-  character,
-}: {
-  character: character;
-}) {
+export default function CharacterDetails({ character }: { character: character }) {
   return (
     <>
       {Object.entries(character).map(([key, value]) => {

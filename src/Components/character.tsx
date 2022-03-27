@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
-import { Card } from "react-bootstrap";
-import { Heart, HeartFill } from "../assets/icons/svgs";
-import { CommonContext } from "../Context/context";
-import { character } from "../types";
-import CharacterDetails from "./CharacterDetails";
-import ModalContainer from "./ModalContainer";
+import React, { useContext } from 'react';
+import { Card } from 'react-bootstrap';
+import { Heart, HeartFill } from '../assets/icons/svgs';
+import { CommonContext } from '../Context/context';
+import { character } from '../types';
+import CharacterDetails from './CharacterDetails';
+import ModalContainer from './ModalContainer';
 export default function Character({ character }: { character: character }) {
   const { isFav, toggleFav } = useContext(CommonContext);
   return (
@@ -12,11 +12,7 @@ export default function Character({ character }: { character: character }) {
       title={`${character.name} Details`}
       btnComponent={({ onClick }) => (
         <Card className="shadow mb-5 character-card">
-          <Card.Img
-            src={character.image}
-            className="card-image"
-            onClick={onClick}
-          ></Card.Img>
+          <Card.Img src={character.image} className="card-image" onClick={onClick}></Card.Img>
           <Card.Body>
             <Card.Text>
               <b>{character.name}</b>
@@ -27,8 +23,7 @@ export default function Character({ character }: { character: character }) {
               className="heart"
               onClick={() => {
                 toggleFav(character.id);
-              }}
-            >
+              }}>
               {isFav(character.id) ? HeartFill : Heart}
             </span>
           </Card.Body>

@@ -1,20 +1,15 @@
-import { character } from "../types";
+import { character } from '../types';
 const charactersService = {
-  getCharacters({
-    searchText = "",
-    status = "",
-    gender = "",
-    page = 1,
-  }): Promise<{
+  getCharacters({ searchText = '', status = '', gender = '', page = 1 }): Promise<{
     totalItems: number;
     totalPages: number;
     characters: character[];
   }> {
     return new Promise((resolve, reject) => {
       fetch(`https://rickandmortyapi.com/graphql`, {
-        method: "POST",
+        method: 'POST',
         headers: {
-          "content-type": "application/json",
+          'content-type': 'application/json',
         },
         body: JSON.stringify({
           query: `{
@@ -43,7 +38,7 @@ const charactersService = {
         }`,
         }),
       })
-        .then((res) => res.json())
+        .then(res => res.json())
         .then(
           ({
             data: {
@@ -52,16 +47,16 @@ const charactersService = {
             errors,
           }) => {
             if (errors?.length) {
-              reject("No Record Found By This Query");
+              reject('No Record Found By This Query');
             } else
               resolve({
                 totalItems: info.count,
                 totalPages: info.pages,
                 characters: results,
               });
-          }
+          },
         )
-        .catch((err) => reject(err.message));
+        .catch(err => reject(err.message));
     });
   },
 };
